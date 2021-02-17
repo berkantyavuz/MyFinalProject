@@ -8,12 +8,13 @@ using System.Text;
 
 namespace Core.DataAccess.EntityFramework
 {
-    public class EfEntityRepositoryBase<TEntity,TContext>:IEntityRepository<TEntity>
-        where TEntity: class,IEntity, new()
-        where TContext: DbContext,new()
+    public class EfEntityRepositoryBase<TEntity, TContext> : IEntityRepository<TEntity>
+       where TEntity : class, IEntity, new()
+       where TContext : DbContext, new()
     {
         public void Add(TEntity entity)
         {
+            //IDisposable pattern implementation of c#
             using (TContext context = new TContext())
             {
                 var addedEntity = context.Entry(entity);
@@ -42,11 +43,11 @@ namespace Core.DataAccess.EntityFramework
 
         public List<TEntity> GetAll(Expression<Func<TEntity, bool>> filter = null)
         {
-            using (TContext contex = new TContext())
+            using (TContext context = new TContext())
             {
                 return filter == null
-                    ? contex.Set<TEntity>().ToList()
-                    : contex.Set<TEntity>().Where(filter).ToList();
+                    ? context.Set<TEntity>().ToList()
+                    : context.Set<TEntity>().Where(filter).ToList();
             }
         }
 
