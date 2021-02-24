@@ -16,11 +16,11 @@ namespace DataAccess.Concrete.InMemory
         public InMemoryProductDal()
         {
             _products = new List<Product> {
-                new Product{ProductId=1, CatagoryId=1, ProductName="Bardak", UnitPrice=15, UnitsInStock=12, },
-                new Product{ProductId=2, CatagoryId=1, ProductName="Kamera", UnitPrice=15, UnitsInStock=12, },
-                new Product{ProductId=3, CatagoryId=2, ProductName="Telefon" ,UnitPrice=15, UnitsInStock=12, },
-                new Product{ProductId=4, CatagoryId=2, ProductName="Klavye", UnitPrice=15, UnitsInStock=12, },
-                new Product{ProductId=5, CatagoryId=2, ProductName="Fare", UnitPrice=15, UnitsInStock=12, }
+                new Product{ProductId=1, CategoryId=1, ProductName="Bardak", UnitPrice=15, UnitsInStock=12, },
+                new Product{ProductId=2, CategoryId=1, ProductName="Kamera", UnitPrice=15, UnitsInStock=12, },
+                new Product{ProductId=3, CategoryId=2, ProductName="Telefon" ,UnitPrice=15, UnitsInStock=12, },
+                new Product{ProductId=4, CategoryId=2, ProductName="Klavye", UnitPrice=15, UnitsInStock=12, },
+                new Product{ProductId=5, CategoryId=2, ProductName="Fare", UnitPrice=15, UnitsInStock=12, }
             };
         }
 
@@ -46,14 +46,14 @@ namespace DataAccess.Concrete.InMemory
         {
             Product productToUpdate = _products.SingleOrDefault(p => p.ProductId == product.ProductId);
             productToUpdate.ProductName = product.ProductName;
-            productToUpdate.CatagoryId = product.CatagoryId;
+            productToUpdate.CategoryId = product.CategoryId;
             productToUpdate.UnitPrice = product.UnitPrice;
             productToUpdate.UnitsInStock = product.UnitsInStock;
         }
 
-        public List<Product> GetAllByCatagory(int catagoryId)
+        public List<Product> GetAllByCatagory(int CategoryId)
         {
-           return  _products.Where(p => p.CatagoryId == catagoryId).ToList();
+           return  _products.Where(p => p.CategoryId == CategoryId).ToList();
 
         }
 
