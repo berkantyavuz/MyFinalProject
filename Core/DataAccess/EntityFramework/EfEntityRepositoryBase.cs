@@ -1,4 +1,4 @@
-﻿using Core.Entities;
+﻿using Core.Entities.Abstrack;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;

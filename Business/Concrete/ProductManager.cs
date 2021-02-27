@@ -1,6 +1,5 @@
 ﻿
 using Business.Abstract;
-using Business.CCS;
 using Business.Constants;
 using Business.ValidationRules.FluentValidation;
 using Core.Aspects.Autofac.Validation;
@@ -31,7 +30,8 @@ namespace Business.Concrete
         }
 
         public string ProductNameAlreadyExists { get; private set; }
-
+        //Claim
+        //[SecuredOperation("product.add,admin")]
         [ValidationAspect(typeof(ProductValidator))]
         public IResult Add(Product product)
         {
